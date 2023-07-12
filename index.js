@@ -26,7 +26,7 @@ app.use('/auth', require('./routes/auth'));
 
 app.use('/ports', require('./routes/ports.route')); //revisar
 
-app.use('/history', require('./routes/history.routes'));
+app.use('/history', require('./routes/history.routes')); //revisar
 
 // Escuchando las peticiones
 app.listen( process.env.PORT, () => {

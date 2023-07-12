@@ -1,5 +1,5 @@
 const { Router } = require("express");
 const router = Router();
-router.get('/', portinfo);
+router.get('/history', historial);
 
 module.exports = router;
