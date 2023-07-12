@@ -24,7 +24,7 @@ app.use( express.json() );
 // Rutas
 app.use('/auth', require('./routes/auth'));
 
-
+app.use('/ports', require('./routes/ports'));
 
 // Escuchando las peticiones
 app.listen( process.env.PORT, () => {

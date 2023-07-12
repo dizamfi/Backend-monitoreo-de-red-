@@ -36,5 +36,4 @@ router.post(
 );
 
 router.get('/validarUser', checkJWT, revalidateToken);
-
 module.exports = router;
