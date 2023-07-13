@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
-router.get('/history', historial);
+const { historial } = require("../controllers/history.controller");
+router.get('/', historial);
 
 module.exports = router;
