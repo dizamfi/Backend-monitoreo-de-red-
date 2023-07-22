@@ -26,9 +26,9 @@ app.use('/auth', require('./routes/auth'));
 
 app.use('/ports', require('./routes/ports.route')); //revisar
 
-app.use('/history', require('./routes/history.routes')); //revisar
+//app.use('/history', require('./routes/history.routes')); //revisar
 
-app.use('/macs', require('./routes/macs.routes')); //revisar
+//app.use('/macs', require('./routes/macs.routes')); //revisar
 // Escuchando las peticiones
 app.listen( process.env.PORT, () => {
   console.log(`Servidor ejecutandose en puerto ${ process.env.PORT }`);
