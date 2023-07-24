@@ -1,11 +1,22 @@
 const express = require('express');
+// creando servidor de express
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require('socket.io');
+const io = new Server(server);
 require('dotenv').config();
 const cors = require('cors');
 const { connectionDB } = require('./db/config');
-// const cors = require('cors');
+const hostNmap = require('./models/hostNmap');
 
-// creando servidor de express
-const app = express();
+// const cors = require('cors');
+io.on('connection', (socket) => {
+  console.log('Nuevo cliente conectado');
+  socket.on('disconnect', () => {
+    console.log('Cliente desconectado');
+  });
+});
 
 // DB
 connectionDB();
@@ -22,11 +33,19 @@ app.use( express.static('public') );
 app.use( express.json() );
 
 // Rutas
-app.use('/auth', require('./routes/auth'));
+app.use('/api/auth', require('./routes/auth'));
+
+app.use('/api/network', require('./routes/network'));
+
+hostNmap.watch().on('change', (change) => {
+  if (change.operationType === 'insert' || change.operationType === 'update') {
+    io.emit('registroActualizado', change.documentKey._id);
+  }
+});
 
 
 
 // Escuchando las peticiones
-app.listen( process.env.PORT, () => {
+server.listen( process.env.PORT, () => {
   console.log(`Servidor ejecutandose en puerto ${ process.env.PORT }`);
 });
