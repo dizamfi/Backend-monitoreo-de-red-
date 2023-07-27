@@ -11,7 +11,7 @@ const portinfo = async (req, res) => {
           date: element.date,
           id: element._id,
           ip: element.ip,
-          status: p.state.state,
+          status: p.state,
           service: p.service,
         });
         //console.log(p)
