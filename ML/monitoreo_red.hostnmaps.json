@@ -1,0 +1,266 @@
+[{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf4"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "50:46:4A:10:B1:07",
+  "ip": "192.168.100.1",
+  "ports": [
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "21"
+      },
+      "state": {
+        "_attributes": {
+          "state": "filtered",
+          "reason": "no-response",
+          "reason_ttl": "0"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "ftp",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "22"
+      },
+      "state": {
+        "_attributes": {
+          "state": "filtered",
+          "reason": "no-response",
+          "reason_ttl": "0"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "ssh",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "23"
+      },
+      "state": {
+        "_attributes": {
+          "state": "filtered",
+          "reason": "no-response",
+          "reason_ttl": "0"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "telnet",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "53"
+      },
+      "state": {
+        "_attributes": {
+          "state": "open",
+          "reason": "syn-ack",
+          "reason_ttl": "64"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "domain",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "80"
+      },
+      "state": {
+        "_attributes": {
+          "state": "open",
+          "reason": "syn-ack",
+          "reason_ttl": "64"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "http",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "139"
+      },
+      "state": {
+        "_attributes": {
+          "state": "filtered",
+          "reason": "no-response",
+          "reason_ttl": "0"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "netbios-ssn",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "445"
+      },
+      "state": {
+        "_attributes": {
+          "state": "filtered",
+          "reason": "no-response",
+          "reason_ttl": "0"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "microsoft-ds",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    }
+  ],
+  "rttvar": "4497",
+  "srtt": "7208",
+  "to": "100000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf7"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "E6:C3:2A:0C:63:8E",
+  "ip": "192.168.100.12",
+  "ports": [
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "5357"
+      },
+      "state": {
+        "_attributes": {
+          "state": "open",
+          "reason": "syn-ack",
+          "reason_ttl": "64"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "wsdapi",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    },
+    {
+      "_attributes": {
+        "protocol": "tcp",
+        "portid": "7070"
+      },
+      "state": {
+        "_attributes": {
+          "state": "open",
+          "reason": "syn-ack",
+          "reason_ttl": "64"
+        }
+      },
+      "service": {
+        "_attributes": {
+          "name": "realserver",
+          "method": "table",
+          "conf": "3"
+        }
+      }
+    }
+  ],
+  "rttvar": "57206",
+  "srtt": "75376",
+  "to": "304200",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf8"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "E8:D8:19:1E:8E:E1",
+  "ip": "192.168.100.18",
+  "ports": null,
+  "rttvar": "1870",
+  "srtt": "12019",
+  "to": "100000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf9"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "50:EB:F6:C4:59:42",
+  "ip": "192.168.100.134",
+  "ports": null,
+  "rttvar": "6000",
+  "srtt": "6625",
+  "to": "100000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf5"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "1C:CC:D6:45:D0:B7",
+  "ip": "192.168.100.3",
+  "ports": null,
+  "rttvar": "2208",
+  "srtt": "11824",
+  "to": "100000",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647d1adf69c013fa3fd2eaf6"
+  },
+  "date": "Sun Jun  4 18:14:39 2023",
+  "status": "up",
+  "mac": "56:27:A0:31:D9:52",
+  "ip": "192.168.100.9",
+  "ports": null,
+  "rttvar": "3603",
+  "srtt": "18337",
+  "to": "100000",
+  "__v": 0
+}]

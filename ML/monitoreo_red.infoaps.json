@@ -1,0 +1,680 @@
+[{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffcd"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "lo",
+  "mac": "",
+  "estado": "up",
+  "txPkts": "56359 Pkts",
+  "transmittedBytes": "4538240 bytes",
+  "rxPkts": "4538240 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "10000000 bits/s",
+  "type": "24",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd0"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "br-lan",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "571992 Pkts",
+  "transmittedBytes": "87614936 bytes",
+  "rxPkts": "308266583 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd1"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "mon1",
+  "mac": "e8:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "1884211338 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffce"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "eth0",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "4122919 Pkts",
+  "transmittedBytes": "1509053548 bytes",
+  "rxPkts": "2212481083 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffcf"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "eth1",
+  "mac": "e8:9f:80:16:ee:3b",
+  "estado": "down",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd4"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "wlan1-1",
+  "mac": "ea:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "8302308 Pkts",
+  "transmittedBytes": "239903278 bytes",
+  "rxPkts": "435211791 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd5"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "wlan0-1",
+  "mac": "ee:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "1357736 Pkts",
+  "transmittedBytes": "207960534 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd6"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "wlan2-1",
+  "mac": "ea:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "2923072 Pkts",
+  "transmittedBytes": "2174398473 bytes",
+  "rxPkts": "986872360 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd2"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "mon2",
+  "mac": "e8:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2404882175 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4143e20d885b958ffd3"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:08:03",
+  "interface": "mon0",
+  "mac": "ea:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2922692732 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe1"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "lo",
+  "mac": "",
+  "estado": "up",
+  "txPkts": "56359 Pkts",
+  "transmittedBytes": "4538240 bytes",
+  "rxPkts": "4538240 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "10000000 bits/s",
+  "type": "24",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe2"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "eth0",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "4128363 Pkts",
+  "transmittedBytes": "1509632282 bytes",
+  "rxPkts": "2213062878 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe3"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "eth1",
+  "mac": "e8:9f:80:16:ee:3b",
+  "estado": "down",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe4"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "br-lan",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "577341 Pkts",
+  "transmittedBytes": "88178541 bytes",
+  "rxPkts": "308752837 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe5"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "mon1",
+  "mac": "e8:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "1885568924 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe8"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "wlan1-1",
+  "mac": "ea:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "8303745 Pkts",
+  "transmittedBytes": "240026235 bytes",
+  "rxPkts": "435227430 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe9"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "wlan0-1",
+  "mac": "ee:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "1359111 Pkts",
+  "transmittedBytes": "208073586 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffea"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "wlan2-1",
+  "mac": "ea:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "2924447 Pkts",
+  "transmittedBytes": "2174511525 bytes",
+  "rxPkts": "986872360 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe6"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "mon2",
+  "mac": "e8:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2406712887 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4783e20d885b958ffe7"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:09:43",
+  "interface": "mon0",
+  "mac": "ea:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2923453798 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fff5"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "lo",
+  "mac": "",
+  "estado": "up",
+  "txPkts": "56359 Pkts",
+  "transmittedBytes": "4538240 bytes",
+  "rxPkts": "4538240 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "10000000 bits/s",
+  "type": "24",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fff6"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "eth0",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "4133816 Pkts",
+  "transmittedBytes": "1510207101 bytes",
+  "rxPkts": "2213631269 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fff7"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "eth1",
+  "mac": "e8:9f:80:16:ee:3b",
+  "estado": "down",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fff8"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "br-lan",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "582697 Pkts",
+  "transmittedBytes": "88733838 bytes",
+  "rxPkts": "309225765 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fff9"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "mon1",
+  "mac": "e8:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "1886758114 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fffa"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "mon2",
+  "mac": "e8:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2408492333 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fffb"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "mon0",
+  "mac": "ea:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2924175367 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fffe"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "wlan2-1",
+  "mac": "ea:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "2925768 Pkts",
+  "transmittedBytes": "2174619100 bytes",
+  "rxPkts": "986872360 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fffc"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "wlan1-1",
+  "mac": "ea:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "8305133 Pkts",
+  "transmittedBytes": "240145037 bytes",
+  "rxPkts": "435247664 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b4dc3e20d885b958fffd"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:11:23",
+  "interface": "wlan0-1",
+  "mac": "ee:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "1360432 Pkts",
+  "transmittedBytes": "208181161 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e49"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "lo",
+  "mac": "",
+  "estado": "up",
+  "txPkts": "56359 Pkts",
+  "transmittedBytes": "4538240 bytes",
+  "rxPkts": "4538240 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "10000000 bits/s",
+  "type": "24",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4c"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "br-lan",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "633944 Pkts",
+  "transmittedBytes": "93962545 bytes",
+  "rxPkts": "313671248 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4d"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "mon1",
+  "mac": "e8:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "1898578605 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4a"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "eth0",
+  "mac": "e8:9f:80:16:ee:3a",
+  "estado": "up",
+  "txPkts": "4185908 Pkts",
+  "transmittedBytes": "1515535914 bytes",
+  "rxPkts": "2218966646 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "1000000000 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4b"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "eth1",
+  "mac": "e8:9f:80:16:ee:3b",
+  "estado": "down",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e50"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "wlan1-1",
+  "mac": "ea:9f:80:16:ee:3c",
+  "estado": "up",
+  "txPkts": "8320233 Pkts",
+  "transmittedBytes": "241397032 bytes",
+  "rxPkts": "435356720 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e51"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "wlan0-1",
+  "mac": "ee:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "1375006 Pkts",
+  "transmittedBytes": "209375606 bytes",
+  "rxPkts": "0 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e52"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "wlan2-1",
+  "mac": "ea:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "2940342 Pkts",
+  "transmittedBytes": "2175813545 bytes",
+  "rxPkts": "986872360 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "6",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4e"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "mon2",
+  "mac": "e8:9f:80:16:ee:3d",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2423191678 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64a9b90ac70ec83fd6134e4f"
+  },
+  "date": "8/7/2023",
+  "hour": " 14:29:14",
+  "interface": "mon0",
+  "mac": "ea:9f:80:16:ee:3e",
+  "estado": "up",
+  "txPkts": "0 Pkts",
+  "transmittedBytes": "0 bytes",
+  "rxPkts": "2936266393 Pkts",
+  "receivedBytes": "0 bytes",
+  "speed": "0 bits/s",
+  "type": "1",
+  "__v": 0
+}]
