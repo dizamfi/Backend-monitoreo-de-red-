@@ -1,22 +1,17 @@
 const express = require('express');
-// creando servidor de express
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
-const { Server } = require('socket.io');
-const io = new Server(server);
+// const { Server } = require('socket.io');
+// const io = new Server(server);
+const { initializeSocket } = require('./sockets/socketManager')
 require('dotenv').config();
 const cors = require('cors');
 const { connectionDB } = require('./db/config');
 const hostNmap = require('./models/hostNmap');
 
-// const cors = require('cors');
-io.on('connection', (socket) => {
-  console.log('Nuevo cliente conectado');
-  socket.on('disconnect', () => {
-    console.log('Cliente desconectado');
-  });
-});
+
+initializeSocket(server);
 
 // DB
 connectionDB();
@@ -37,11 +32,25 @@ app.use('/api/auth', require('./routes/auth'));
 
 app.use('/api/network', require('./routes/network'));
 
-hostNmap.watch().on('change', (change) => {
-  if (change.operationType === 'insert' || change.operationType === 'update') {
-    io.emit('registroActualizado', change.documentKey._id);
-  }
-});
+// io.on('connection', (socket) => {
+//   console.log('Nuevo cliente conectado');
+//   socket.on('disconnect', () => {
+//     console.log('Cliente desconectado');
+//   });
+// });
+
+
+const scanAP = require("./scripts/scanAP");
+const scanNetworkNmap = require("./scripts/scanNetworkNmap");
+// scanAP();
+// scanNetworkNmap();
+
+
+// hostNmap.watch().on('change', (change) => {
+//   if (change.operationType === 'insert' || change.operationType === 'update') {
+//     io.emit('registroActualizado', change.documentKey._id);
+//   }
+// });
 
 
 

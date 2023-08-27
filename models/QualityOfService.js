@@ -39,6 +39,10 @@ const QualityOfServiceSchema = Schema({
 
   TX_Pkts:{
     type: Number
+  },
+
+  frecuency: {
+    type: String
   }
 
 
