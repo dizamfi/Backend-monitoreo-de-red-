@@ -48,7 +48,9 @@ function almacenarDatosCalidadRed() {
                 RX_Pkts: parseFloat(values[values.findIndex((elemento) => elemento.includes("TX")) - 1]),
                 TX: parseFloat(values[values.findIndex((elemento) => elemento.includes("TX")) + 1]),
                 TX_Pkts: parseFloat(values[values.findIndex((elemento) => elemento.includes("expected")) - 1]),
-                frecuency: values[values.length - 1]
+                frecuency: values[values.length - 2],
+                tipo: values[values.length - 1]
+
               });
   
               await model.save(); 

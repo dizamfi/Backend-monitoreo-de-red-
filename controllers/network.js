@@ -6,6 +6,8 @@ const infoHost = require("../models/infoHost");
 const ejecutarScriptAP = require("../scripts/scanAP");
 const ejecutarScriptSnmp = require("../scripts/scanNetworkSnmp");
 const ejecutarScriptQualityOfServices = require("../scripts/scanQualityOfService");
+const { format, subHours } = require("date-fns");
+const { utcToZonedTime } = require("date-fns-tz");
 const ping = require("ping");
 
 const getPorts = async (req, res = response) => {
@@ -103,7 +105,8 @@ const getPktsByInterface = async (req, res = response) => {
   try {
     const registros = await infoAP
       .find()
-      .select("interface date txPkts");
+      .select("interface date txPkts")
+      .lean(); // Utilizamos .lean() para obtener un objeto JSON plano en lugar de un objeto mongoose.
 
     const registrosConFechAndNumTxPkts = registros.map((registro) => ({
       ...registro,
@@ -122,9 +125,22 @@ const getPktsByInterface = async (req, res = response) => {
       (a, b) => a.date - b.date
     );
 
+    // Filtramos los registros para obtener solo los de las 5 últimas fechas
+    const ultimasFechas = [
+      ...new Set(
+        registrosOrdenados.map((r) => r.date.toISOString().split("T")[0])
+      ),
+    ]
+      .slice(-5)
+      .sort();
+
+    const registrosFiltrados = registrosOrdenados.filter((r) =>
+      ultimasFechas.includes(r.date.toISOString().split("T")[0])
+    );
+
     const sumaPorInterfaceFecha = {};
 
-    registrosOrdenados.forEach((registro) => {
+    registrosFiltrados.forEach((registro) => {
       const interfaceName = registro.interface;
       const fecha = registro.date.toISOString().split("T")[0];
 
@@ -167,7 +183,89 @@ const getPktsByInterface = async (req, res = response) => {
   }
 };
 
+// const getPktsByInterface = async (req, res = response) => {
+//   try {
+//     const registros = await infoAP
+//       .find()
+//       .select("interface date txPkts")
+//       .lean();
 
+//     const registrosConFechAndNumTxPkts = registros.map((registro) => ({
+//       ...registro,
+//       date:
+//         typeof registro.date === "string"
+//           ? new Date(registro.date.split("/").reverse().join("-"))
+//           : registro.date,
+//       txPkts:
+//         typeof registro.txPkts === "string"
+//           ? parseInt(registro.txPkts, 10)
+//           : registro.txPkts,
+//       interface: registro.interface,
+//     }));
+
+//     const registrosOrdenados = registrosConFechAndNumTxPkts.sort(
+//       (a, b) => a.date - b.date
+//     );
+
+//     const ultimaFecha = new Date(); // Fecha actual
+//     ultimaFecha.setHours(ultimaFecha.getHours() - 5);
+
+//     const registrosFiltrados = registrosOrdenados.filter(
+//       (r) => r.date >= ultimaFecha
+//     );
+
+//     const sumaPorInterfaceHora = {};
+
+//     registrosFiltrados.forEach((registro) => {
+//       const interfaceName = registro.interface;
+//       const hora = registro.date
+//         .toLocaleString("es-EC", {
+//           timeZone: "America/Guayaquil", // Zona horaria de Ecuador
+//           hour: "numeric",
+//         })
+//         .padStart(2, "0"); // Formatear la hora a dos dígitos
+
+//       if (!sumaPorInterfaceHora[interfaceName]) {
+//         sumaPorInterfaceHora[interfaceName] = {};
+//       }
+
+//       if (!sumaPorInterfaceHora[interfaceName][hora]) {
+//         sumaPorInterfaceHora[interfaceName][hora] = 0;
+//       }
+
+//       sumaPorInterfaceHora[interfaceName][hora] += registro.txPkts;
+//     });
+
+//     const resultadoFinal = [];
+
+//     for (const interfaceName in sumaPorInterfaceHora) {
+//       const data = Object.entries(sumaPorInterfaceHora[interfaceName])
+//         .map(([hora, totalTxPkts]) => ({
+//           x: `${hora}:00:00`, // Formato hh:00:00
+//           y: totalTxPkts,
+//         }))
+//         .sort((a, b) => {
+//           // Ordenar en forma ascendente por la propiedad "x"
+//           return new Date(`1970-01-01T${a.x}`).getTime() - new Date(`1970-01-01T${b.x}`).getTime();
+//         });
+
+//       resultadoFinal.push({
+//         id: interfaceName,
+//         data,
+//       });
+//     }
+
+//     res.status(201).json({
+//       ok: true,
+//       registrosPorInterface: resultadoFinal,
+//     });
+//   } catch (error) {
+//     res.status(500).json({
+//       ok: false,
+//       message: "Ha ocurrido un error en el servidor",
+//     });
+//   }
+// };
 
 const getPktsTotalWithSnmp = async (req, res = response) => {
   try {
@@ -196,9 +294,10 @@ const getPktsTotalWithSnmp = async (req, res = response) => {
       const fechaHora = registro.date.toISOString().split("T");
       const fecha = fechaHora[0];
       const horaUTC = fechaHora[1].split(":")[0];
-      
+
       const ecuadorOffset = -5;
       const horaEcuador = (parseInt(horaUTC) + ecuadorOffset + 24) % 24;
+      console.log(horaEcuador);
 
       if (!sumaPorFechaYHoraTx[fecha]) {
         sumaPorFechaYHoraTx[fecha] = {};
@@ -226,6 +325,7 @@ const getPktsTotalWithSnmp = async (req, res = response) => {
     const ultimasHoras = Object.keys(sumaPorFechaYHoraTx[ultimaFecha])
       .sort()
       .slice(-5);
+    console.log(ultimaFecha);
 
     ultimasHoras.forEach((horaEcuador) => {
       const txPktsValue = sumaPorFechaYHoraTx[ultimaFecha][horaEcuador] / 1000;
@@ -266,8 +366,7 @@ const getPktsTotalWithSnmp = async (req, res = response) => {
 
 const getPktsWithSSH = async (req, res = response) => {
   try {
-    const registros = await QualityOfService
-      .find()
+    const registros = await QualityOfService.find()
       .select("date TX_Pkts RX_Pkts hour")
       .sort({ date: -1, hour: -1 })
       .limit(1);
@@ -288,14 +387,20 @@ const getPktsWithSSH = async (req, res = response) => {
       const currentHour = new Date(lastDate);
       currentHour.setHours(lastDate.getHours() - i);
 
-      const hourQuery = currentHour.getHours().toString().padStart(2, '0');
+      const hourQuery = currentHour.getHours().toString().padStart(2, "0");
       const recordsForHour = await QualityOfService.find({
         date: lastRecord.date,
         hour: hourQuery,
       });
 
-      const txPktsTotal = recordsForHour.reduce((total, record) => total + record.TX_Pkts, 0);
-      const rxPktsTotal = recordsForHour.reduce((total, record) => total + record.RX_Pkts, 0);
+      const txPktsTotal = recordsForHour.reduce(
+        (total, record) => total + record.TX_Pkts,
+        0
+      );
+      const rxPktsTotal = recordsForHour.reduce(
+        (total, record) => total + record.RX_Pkts,
+        0
+      );
 
       responseArray.push({
         id: "txPkts",
@@ -306,7 +411,7 @@ const getPktsWithSSH = async (req, res = response) => {
         id: "rxPkts",
         data: responseArray.length === 0 ? [] : responseArray[1].data,
       });
-      
+
       responseArray[0].data.push({
         x: `${hourQuery}:00:00`,
         y: `${txPktsTotal.toFixed(2)} k`,
@@ -330,11 +435,6 @@ const getPktsWithSSH = async (req, res = response) => {
   }
 };
 
-
-
-
-
-
 const getStateInterfaces = async (req, res = response) => {
   const registros = await infoAP
     .find()
@@ -353,6 +453,76 @@ const getStateInterfaces = async (req, res = response) => {
     });
   }
 };
+
+// const getInfoDevices = async (req, res = response) => {
+//   try {
+//     const registro1 = await infoHost
+//       .find()
+//       .select("ip mac latencia date")
+//       .sort({ date: -1, hour: -1 })
+//       .limit(10);
+//     const registro2 = await QualityOfService.find()
+//       .select("mac rssi SNR RX TX")
+//       .sort({ date: -1, hour: -1 })
+//       .limit(10);
+
+//     const registros = [];
+//     let id = 1;
+
+//     registro1.forEach((data) => {
+//       const matchingData2 = registro2.find(
+//         (data2) => data.mac.toLowerCase() === data2.mac.toLowerCase()
+//       );
+
+//       console.log(registro1);
+
+//       if (!registros.some((objeto) => objeto.mac === data.mac)) {
+//         registros.push({
+//           id: id++,
+//           mac: data.mac,
+//           ip: matchingData2 ? data.ip: null,
+//           latencia: data.latencia,
+//           date: data.date,
+//           rssi: matchingData2 ? matchingData2.rssi : null,
+//           SNR: matchingData2 ? matchingData2.SNR: null,
+//           RX: matchingData2 ? matchingData2.RX : null,
+//           TX: matchingData2 ? matchingData2.TX: null,
+//         });
+//       }
+//     });
+
+//     registro2.forEach((data) => {
+//       const matchingData = registros.find(
+//         (data2) => data.mac.toLowerCase() === data2.mac.toLowerCase() 
+//       );
+
+//       if(!matchingData){
+//         registros.push({
+//           id: id++,
+//           mac: data.mac,
+//           ip: null,
+//           latencia: null,
+//           date: data.date,
+//           rssi: null,
+//           SNR: null,
+//           RX: null,
+//           TX: null,
+//         });
+      
+//       }
+
+      
+//     });
+
+//     res.status(201).json({ registros });
+//   } catch (error) {
+//     res.status(500).json({
+//       ok: false,
+//       message: "Ha ocurrido un error en el servidor",
+//     });
+//   }
+// };
+
 
 const getInfoDevices = async (req, res = response) => {
   try {
@@ -445,16 +615,18 @@ const getTraffic = async (req, res = response) => {
     const dataTx = Object.entries(sumaTransmittedBytesPorFecha)
       .map(([fecha, totalTransmittedBytes]) => ({
         x: fecha,
-        y: totalTransmittedBytes,
+        y: totalTransmittedBytes / 1000, // Dividir por mil
       }))
-      .sort((a, b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x))
+      .slice(-5); // Tomar las últimas 5 fechas
 
     const dataRx = Object.entries(sumaReceivedBytesPorFecha)
       .map(([fecha, totalReceivedBytes]) => ({
         x: fecha,
-        y: totalReceivedBytes,
+        y: totalReceivedBytes / 1000, // Dividir por mil
       }))
-      .sort((a, b) => new Date(a.x) - new Date(b.x));
+      .sort((a, b) => new Date(a.x) - new Date(b.x))
+      .slice(-5); // Tomar las últimas 5 fechas
 
     const resultadoFinal = [
       {
@@ -493,7 +665,7 @@ const postEjecutarScripts = async (req, res = response) => {
         ok: false,
         message: "La dirección IP del router no está en la misma red",
       });
-    } else {
+    } else {  
       if (scanType === "SNMP") {
         await ejecutarScriptAP(router);
         await ejecutarScriptSnmp(router);
@@ -549,7 +721,11 @@ const getFrecuencys = async (req, res = response) => {
     registros.forEach((registro) => {
       const { mac, frecuency } = registro;
       if (!frecuenciaCantidad[frecuency]) {
-        frecuenciaCantidad[frecuency] = { label: frecuency, value: 0, id: frecuency };
+        frecuenciaCantidad[frecuency] = {
+          label: frecuency,
+          value: 0,
+          id: frecuency,
+        };
       }
       if (!frecuenciaCantidad[frecuency][mac]) {
         frecuenciaCantidad[frecuency][mac] = true;
@@ -558,7 +734,9 @@ const getFrecuencys = async (req, res = response) => {
     });
 
     // Convertir el objeto en un arreglo de objetos sin las direcciones MAC
-    const resultados = Object.values(frecuenciaCantidad).map(({ label, value, id }) => ({ label, value, id }));
+    const resultados = Object.values(frecuenciaCantidad).map(
+      ({ label, value, id }) => ({ label, value, id })
+    );
 
     res.json({
       resultados,
@@ -571,9 +749,99 @@ const getFrecuencys = async (req, res = response) => {
   }
 };
 
+const getDevicedConectedSnmp = async (req, res = response) => {
+  try {
+    const registros = await infoHost.find().select("date hour mac").lean();
 
+    const registrosConFechAndMac = registros.map((registro) => ({
+      ...registro,
+      date:
+        typeof registro.date === "string"
+          ? new Date(registro.date.split("/").reverse().join("-"))
+          : registro.date,
+      hour: registro.hour,
+      mac: registro.mac,
+    }));
 
+    const registrosOrdenados = registrosConFechAndMac.sort(
+      (a, b) => b.date - a.date
+    );
 
+    const ultimaFecha = registrosOrdenados[0].date.toISOString().split("T")[0];
+    const ultimaHora = registrosOrdenados[0].hour;
+
+    const macsUltimaFechaHora = new Set(
+      registrosOrdenados
+        .filter(
+          (registro) =>
+            registro.date.toISOString().split("T")[0] === ultimaFecha &&
+            registro.hour === ultimaHora
+        )
+        .map((registro) => registro.mac)
+    );
+
+    console.log(macsUltimaFechaHora);
+
+    const cantidadMacs = macsUltimaFechaHora.size;
+
+    res.status(200).json({
+      ok: true,
+      cantidadMacs: cantidadMacs,
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: "Ha ocurrido un error en el servidor",
+    });
+  }
+};
+
+const getDevicedConectedSSH = async (req, res = response) => {
+  try {
+    const registros = await QualityOfService.find()
+      .select("date hour mac")
+      .lean();
+
+    const registrosConFechAndMac = registros.map((registro) => ({
+      ...registro,
+      date:
+        typeof registro.date === "string"
+          ? new Date(registro.date.split(".").reverse().join("-"))
+          : registro.date,
+      hour: registro.hour,
+      mac: registro.mac,
+    }));
+
+    const registrosOrdenados = registrosConFechAndMac.sort(
+      (a, b) => b.date - a.date
+    );
+
+    const ultimaFecha = registrosOrdenados[0].date.toISOString().split("T")[0];
+    const ultimaHora = registrosOrdenados[0].hour;
+
+    const macsUltimaFechaHora = new Set(
+      registrosOrdenados
+        .filter(
+          (registro) =>
+            registro.date.toISOString().split("T")[0] === ultimaFecha &&
+            registro.hour === ultimaHora
+        )
+        .map((registro) => registro.mac)
+    );
+
+    const cantidadMacs = macsUltimaFechaHora.size;
+
+    res.status(200).json({
+      ok: true,
+      cantidadMacs: cantidadMacs,
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: "Ha ocurrido un error en el servidor",
+    });
+  }
+};
 
 module.exports = {
   getTxRxByMac,
@@ -586,5 +854,7 @@ module.exports = {
   postStopScripts,
   getFrecuencys,
   getPktsTotalWithSnmp,
-  getPktsWithSSH
+  getPktsWithSSH,
+  getDevicedConectedSnmp,
+  getDevicedConectedSSH,
 };

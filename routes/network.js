@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { getPorts, getTxRxByMac, getPktsByInterface, getStateInterfaces, getInfoDevices, getTraffic, postEjecutarScripts, postStopScripts, getFrecuencys, getPktsTotal, getPktsTotalWithSnmp, getPktsWithSSH } = require("../controllers/network");
+const { getPorts, getTxRxByMac, getPktsByInterface, getStateInterfaces, getInfoDevices, getTraffic, postEjecutarScripts, postStopScripts, getFrecuencys, getPktsTotal, getPktsTotalWithSnmp, getPktsWithSSH, getDevicedConectedSnmp, getDevicedConectedSSH } = require("../controllers/network");
 const router = Router();
 
 router.get("/ports", getPorts);
@@ -23,6 +23,10 @@ router.get("/frecuency", getFrecuencys);
 router.post("/ejecutarScripts", postEjecutarScripts );
 
 router.post("/stopScripts", postStopScripts );
+
+router.get("/devicesConectedSnmp", getDevicedConectedSnmp );
+
+router.get("/devicesConectedSSH", getDevicedConectedSSH );
 
 module.exports = router;
 

@@ -43,6 +43,10 @@ const QualityOfServiceSchema = Schema({
 
   frecuency: {
     type: String
+  },
+
+  tipo: {
+    type: String
   }
 
 

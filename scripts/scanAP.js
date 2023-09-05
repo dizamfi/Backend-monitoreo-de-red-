@@ -1,6 +1,7 @@
 const snmp = require("snmp-native");
 const infoHost = require("../models/infoAP");
 // const { connectionDB } = require("../db/config.js");
+const moment = require("moment-timezone");
 const { getIO } = require("../sockets/socketManager");
 
 // connectionDB();
@@ -45,13 +46,14 @@ const ejecutarScriptAP = (ip) => {
 
   const hosts_ant = {}; // Objeto para guardar el estado anterior de hosts
 
-  const intervalId = setInterval(() => {
+  setInterval(() => {
     // Se crea una instancia SNMP
     const session = new snmp.Session(options);
 
     const hosts = {}; // Objeto para guardar la información actual
 
     const fechaActual = new Date();
+    //const fechaActual = moment().tz("America/Guayaquil");
 
     session.getSubtree({ oid: macTableOid }, (error, varbinds) => {
       if (error) {
@@ -194,8 +196,10 @@ const ejecutarScriptAP = (ip) => {
       } else {
         varbinds.forEach((varbind) => {
           const fechayhora = fechaActual.toLocaleString().split(",");
-          const fecha = fechayhora[0];
+          // const fecha = fechayhora[0];
           const hora = fechayhora[1];
+          //const fecha = fechaActual.format("YYYY-MM-DD");
+          //const hora = fechaActual.format("HH:mm:ss");
           hosts[varbind.oid.slice(10).toString()]["type"] = varbind.value;
           hosts[varbind.oid.slice(10).toString()]["date"] = fechaActual;
           hosts[varbind.oid.slice(10).toString()]["hour"] = hora;
@@ -224,8 +228,6 @@ const ejecutarScriptAP = (ip) => {
       }
 
       session.close();
-
-      
     });
 
     // if(process.env.STOPSCRIPTS === true){
